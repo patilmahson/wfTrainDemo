@@ -1,6 +1,10 @@
 package com.example.wftraining.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.isA;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -9,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,6 +22,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.wftraining.domains.Customer;
+import com.example.wftraining.domains.CustomerEvent;
+import com.example.wftraining.producers.CustomerEventsProducer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -34,8 +41,8 @@ public class CustomerControllerUnitTest {
 	
 	ObjectMapper objectMapper = new ObjectMapper();
 	
-//	@MockBean
-//	CustomerEventsProducer mup;
+	@MockBean
+	CustomerEventsProducer mup;
 	
 	@Test
 	public void contextLoads() throws Exception {
@@ -54,7 +61,11 @@ public class CustomerControllerUnitTest {
 		HttpEntity<Customer> request = new HttpEntity<>(cust);
 
         String json = objectMapper.writeValueAsString(cust);
-
+        
+        doNothing().when(mup).createUserEvent(isA(CustomerEvent.class));
+        
+        verify(mup, times(1)).createUserEvent(isA(CustomerEvent.class));
+        
         //when
         mockMvc.perform(post("/customers")
         .content(json)
