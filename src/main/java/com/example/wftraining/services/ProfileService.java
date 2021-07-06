@@ -50,7 +50,7 @@ public class ProfileService {
 	}
 
 	// for test only
-	public  List<Profile> getProfiles() {
+	public  List<Profile> testProfiles() {
 		//Profile pr = profileRepository.findByProfileId(1L);
 		LOGGER.info("inside getProfiles of ProfileService");
 			profileRepository.deleteAll();
@@ -73,6 +73,16 @@ public class ProfileService {
 		    		System.out.println(pro);
 		    }
 	    
+		return pros;
+	}
+
+	public List<Profile> getProfiles() {
+		List<Profile> pros = profileRepository.findAll();
+	    System.out.println("Find profiles");
+	    for ( Profile pro: pros) {    	   
+
+	    		System.out.println(pro);
+	    }
 		return pros;
 	}
 }
