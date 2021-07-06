@@ -4,10 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.example.wftraining.domains.Customer;
@@ -17,9 +13,6 @@ import com.example.wftraining.repositories.CustomerRepository;
 public class CustomerService {
 	@Autowired
 	CustomerRepository cr;
-	
-	@Autowired
-	MongoTemplate mt;
 	
 	public void createCustomer(Customer c) {
 		cr.save(c);
