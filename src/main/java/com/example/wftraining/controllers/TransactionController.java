@@ -34,7 +34,5 @@ public class TransactionController {
 		return ts.listTransactionsByAccountID(accountID);
 		
 	}
-//	@RequestMapping(method=RequestMethod.POST, value="/Profiles")
-//	@PutMapping("/Profiles/{id}")
-//	@DeleteMapping("/Profiles/{id}")
+	
 }
