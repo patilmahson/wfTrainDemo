@@ -1,15 +1,15 @@
 package com.example.wftraining.repositories;
 
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.example.wftraining.domains.Profile;
 
+public interface ProfileRepository extends MongoRepository<Profile, String>{
 
+	public Profile findByUserId(String username);
 
-public interface ProfileRepository extends MongoRepository<Profile, Long> {
-	
-	Profile findByProfileId(long l);
+	public Profile findByProfileId(long id);
 
-	void deleteByProfileId(long id);
+	public void deleteByProfileId(long id);
+
 }
