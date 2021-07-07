@@ -29,7 +29,13 @@ public class ProfileController {
 	@Autowired
 	private ProfileService profileService;
 	
-	@GetMapping("/")
+	@GetMapping("/testProfile")
+	public  List<Profile> testProfiles() {
+		LOGGER.info("inside getProfiles of controller");
+		return profileService.testProfiles();
+	}
+	
+	@GetMapping("/Profiles")
 	public  List<Profile> getProfiles() {
 		LOGGER.info("inside getProfiles of controller");
 		return profileService.getProfiles();
