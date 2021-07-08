@@ -1,5 +1,6 @@
 package com.example.wftraining.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,9 @@ public class TransactionController {
 	@Autowired
 	TransactionService ts;
 	
-	@RequestMapping(method=RequestMethod.POST, value="/")
+	@RequestMapping(method=RequestMethod.POST)
 	public String addTransaction(@RequestBody Transaction transaction) {
+		transaction.setDate(LocalDateTime.now());
 		ts.addTransaction(transaction);
 		String response = "{\"success\": true, \"message\": Transaction has been added successfully.}";
 		return response;

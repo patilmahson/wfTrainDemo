@@ -12,3 +12,7 @@ Post endpoint to /customers
 Takes a json body of type customer and saves the customer to the mongodb
 
 >{"cID":16,"firstName":"roald", "lastName":"ghoul", "age":27}
+
+# Swagger Spec
+A swagger spec can be found under src/main/resources.  
+Paste this spec into editor.swagger.io to try out the methods

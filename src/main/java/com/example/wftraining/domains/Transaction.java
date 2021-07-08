@@ -23,7 +23,7 @@ public class Transaction {
 	@Id
 	private ObjectId id;
 	private Long amount;
-	private LocalDateTime localDateTime;
+	private LocalDateTime date;
 	private String category;
 	private String merchantName;
 	private String description;
