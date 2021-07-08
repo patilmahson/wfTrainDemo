@@ -51,7 +51,7 @@ public class ProfileControllerIntegrationTest {
     ProfileController controller;
 
 	@Test
-	public void newProfileIntegrationTestShouldReturn200() throws Exception{
+	public void getProfileIntegrationTest() throws Exception{
 		Account acc1 = Account.builder()
 				.accNo("12345")
 				.accType("saving")
@@ -100,5 +100,6 @@ public class ProfileControllerIntegrationTest {
         System.out.println(response);
         
         assertThat(response.getProfileId()).isEqualTo(1);
+       
 	}
 }

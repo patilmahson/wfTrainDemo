@@ -43,12 +43,7 @@ public class ProfileControllerUnitTest {
 	
 	
 	@Test
-	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();
-	}
-	
-	@Test
-    void postProfileEvent() throws Exception {
+    void postProfileEventReturnOk() throws Exception {
 		Account acc1 = Account.builder()
 				.accNo("12345")
 				.accType("saving")
