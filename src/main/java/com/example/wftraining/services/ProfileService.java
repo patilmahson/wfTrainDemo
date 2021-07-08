@@ -55,9 +55,9 @@ public class ProfileService {
 		LOGGER.info("inside getProfiles of ProfileService");
 			profileRepository.deleteAll();
 	
-		    final Account account = new Account(1L, "123", new Date(), "Saving", 10.0);
-		    final Account account2 = new Account(1L, "1234", new Date(), "Checking", 15.0);
-		    final Account account3 = new Account(1L, "12345", new Date(), "Credit Card", 16.0);
+		    final Account account = new Account(1L, "123", new Date(), "Saving", 10.0, 0);
+		    final Account account2 = new Account(1L, "1234", new Date(), "Checking", 15.0, 0);
+		    final Account account3 = new Account(1L, "12345", new Date(), "Credit Card", 16.0, 0);
 		   
 		    final User user = new User(1L,"1@1.com", "password", "john","doe");
 		    final List<Account> accounts = Arrays.asList(account, account2, account3);
