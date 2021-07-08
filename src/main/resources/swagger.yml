@@ -1,0 +1,93 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger Petstore"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+tags:
+- name: "transaction"
+  description: "Everything about your transactions"
+schemes:
+- "http"
+paths:
+  /transactions:
+    post:
+      tags:
+      - "transaction"
+      summary: "Create a new transaction"
+      description: ""
+      operationId: "addTransaction"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Transaction object specifying what was bought from who"
+        required: true
+        schema:
+          $ref: "#/definitions/Transaction"
+      responses:
+        "405":
+          description: "Invalid input"
+  /transactions/{accountID}:
+    get:
+      tags:
+      - "transaction"
+      summary: "Find transactions by accountID"
+      description: "Returns a list of transactions for an accountID"
+      operationId: "getTransactionsById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "accountID"
+        in: "path"
+        description: "ID of account to return transactions"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Transaction"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Transactions not found"
+definitions:
+  Transaction:
+    type: "object"
+    description: "in dollars"
+    required:
+    - "amount"
+    - "accountID"
+    properties:
+      amount:
+        type: "integer"
+        format: "int64"
+        example: 500
+      category:
+        type: "string"
+        example: "online shopping"
+      merchantName:
+        type: "string"
+        example: "Amazon"
+      description:
+        type: "string"
+        example: "shoes and protein powder"
+      accountID: 
+        type: "integer"
+        format: "int64"
+        example: 1234567890123456
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
