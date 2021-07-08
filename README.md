@@ -6,6 +6,7 @@ Producer side to a project to demonstrate competence with Apache Kafka and Sprin
 
 # Setup
 Install and run mongodb on port 27017 before starting the application
+Install Kafka and run a server instance on port 9092
 
 # Endpoints
 Post endpoint to /customers  
