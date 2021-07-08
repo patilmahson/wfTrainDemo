@@ -4,10 +4,12 @@ import java.util.Date;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
 	
 	private Long id;	
