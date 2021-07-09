@@ -8,8 +8,12 @@ spring:
     mongodb:
       #necessary param authSource
       uri: mongodb://admin:admin@127.0.0.1:27017/customers?authSource=admin
-#      host: "localhost"
-#      port: 27017
-#      database: "customers"
-#      username: "admin"
-#      password: "admin"
+      host: "localhost"
+      port: 27017
+      database: "customers"
+      username: "admin"
+      password: "admin"
+
+map:
+    jwtKey: wfTrainSecretKey
+    jwtMS: 86400000
