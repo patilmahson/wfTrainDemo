@@ -30,6 +30,14 @@ END README -->
 
 		<!-- CSS -->
 		<style>
+			:root {
+				--primary: #3b4d61;
+				--secondary: #ef9d10;
+				--tertiary: #6b7b8c;
+				--textual: #FFFFFF;
+				--background: #c4c4c4;
+			}
+
 			/*All of the following animated styles are for the hamburger menu only*/
 			.animated-icon1 {
 				width: 30px;
@@ -50,7 +58,7 @@ END README -->
 			}
 
 			.animated-icon1 span {
-				background: #3b4d61;
+				background: var(--primary);
 				display: block;
 				position: absolute;
 				height: 3px;
@@ -103,7 +111,7 @@ END README -->
 
 			/*Navbar coloring and positioning*/
 			.navbar {
-				background-color: #ef9d10;
+				background-color: var(--secondary);
 				position: fixed;
 				width: 100%;
 			}
@@ -119,7 +127,7 @@ END README -->
 
 			/*For Navbar text coloring*/
 			#content a {
-				color: #3b4d61;
+				color: var(--primary);
 			}
 
 			/*For profile icon list*/
@@ -130,7 +138,8 @@ END README -->
 			/*Table formatting*/
 			table {
 				width: 100%;
-				background-color: #c4c4c4;
+				background-color: var(--background);
+				color: var(--primary);
 				font-size: 20px;
 			}
 
