@@ -44,7 +44,7 @@ public class TransactionEventsProducer {
         String value = objectMapper.writeValueAsString(trans);
         ProducerRecord<Integer,String> producerRecord = buildProducerRecord(key, value, topic);
 
-        ListenableFuture<SendResult<Integer,String>> listenableFuture =  kafkaTemplate.send(producerRecord);
+        ListenableFuture<SendResult<Integer,String>> listenableFuture = kafkaTemplate.send(producerRecord);
 
         listenableFuture.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
             @Override

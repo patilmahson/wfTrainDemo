@@ -4,7 +4,7 @@ spring:
 
 ---
 spring:
-  profiles: kafka-local
+  profiles: local
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
