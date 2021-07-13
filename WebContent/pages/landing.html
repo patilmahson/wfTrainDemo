@@ -1,0 +1,68 @@
+<!-- [[[https://codepen.io/gvillar08/pen/gOWabro]]] -->
+
+<html>
+	<head>
+		<!-- Custom stylesheet (GOES LAST) -->
+		<link href="global.css" rel="stylesheet">
+
+		<!-- CSS -->
+		<style>
+			p {
+				margin: 3px;
+			}
+		</style>
+		<!-- End CSS -->
+	</head>
+	<body>
+		<header>
+			<object type="text/html" data="fragment.html" id="header"></object>
+		</header>
+		<br>
+
+		<!-- Main Content -->
+		<table>
+			<tr>
+				<td colspan="2" style="text-align: center;">Account Summary</td>
+			</tr>
+			<tr class='clickable-row' data-href='#'>
+				<td>Checking</td>
+				<td style="text-align: right;">
+					<p>$2,096</p>
+					<p style="font-size: 12px;">Available Balance</p>
+				</td>
+			</tr>
+			<tr class='clickable-row' data-href='#'>
+				<td>Savings</td>
+				<td style="text-align: right;">
+					<p>$11,230.06</p>
+					<p style="font-size: 12px;">Available Balance</p>
+				</td>
+			</tr>
+			<tr class='clickable-row' data-href='#'>
+				<td>Platinum Credit</td>
+				<td style="text-align: right;">
+					<p>$27.49</p>
+					<p style="font-size: 12px;">Outstanding Balance</p>
+				</td>
+			</tr>
+			<tr class='clickable-row' data-href='https://www.wikipedia.com'>
+				<td>Cashback Rewards</td>
+				<td style="text-align: right;">
+					<p>$4.90</p>
+					<p style="font-size: 12px;">Available Balance</p>
+				</td>
+			</tr>
+		</table>
+		<!-- End Main Content -->
+	</body>
+
+	<!-- JS -->
+	<script>
+		jQuery(document).ready(function($) {
+			$(".clickable-row").click(function() {
+				window.location = $(this).data("href");
+			});
+		});
+	</script>
+	<!-- End JS -->
+</html>

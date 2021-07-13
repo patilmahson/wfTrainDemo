@@ -1,0 +1,453 @@
+<!-- Login by https://codepen.io/Mr_Dzi/pen/WpeYNQ -->
+
+<html>
+	<head>
+		<link rel="icon" href="Graphics/Logo.png">
+		<title>Altus</title>
+		
+		<!-- React JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<!-- Bootstrap JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		<!-- Custom stylesheet (GOES LAST) -->
+		<link href="global.css" rel="stylesheet">
+
+		<!-- responsive viewport meta tag -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- CSS -->
+		<style>
+			body {
+				font-family: 'Open Sans', sans-serif;
+				font-size: 16px;
+				color: var(--textual);
+				margin: 0 !important;
+			}
+
+			.app {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 100%;
+			}
+			
+			.form-block-wrapper {
+				position: fixed;
+				/*Uncomment if you want a colored background*/
+/*				top: 0;
+				left: 0;
+				right: 0;
+				height: 100%;*/
+				-moz-transition: all 0.85s ease-in-out;
+				-webkit-transition: all 0.85s ease-in-out;
+				transition: all 0.85s ease-in-out;
+			}
+			
+			/*Unused background colorings*/
+/*			.form-block-wrapper--is-login {
+				opacity: 0.92;
+				background-color: var(--primary);
+			}
+			
+			.form-block-wrapper--is-signup {
+				opacity: 0.94;
+				background-color: var(--secondary);
+			}*/
+			
+			.form-block {
+				position: fixed;
+				top: 20%;
+				right: 0;
+				left: 0;
+				margin-left: auto;
+				margin-right: auto;
+				width: 20em;
+				padding: 25px;
+				background: var(--primary);
+				border-radius: 20px;
+				-webkit-box-shadow: 0px 0px 16px 9px rgba(0, 0, 0, 0.07);
+				-moz-box-shadow: 0px 0px 16px 9px rgba(0, 0, 0, 0.07);
+				box-shadow: 0px 0px 16px 9px rgba(0, 0, 0, 0.07);
+			}
+			
+			.form-block__header {
+				margin-bottom: 20px;
+			}
+
+			.form-block__header h1 {
+				font-size: 30px;
+				margin: 0 0 20px;
+			}
+			
+			.form-block__toggle-block {
+				position: relative;
+			}
+			
+			.form-block__toggle-block span {
+				font-size: 13px;
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.65);
+			}
+			
+			.form-block__input-wrapper {
+				height: 126px;
+				position: relative;
+				margin-bottom: 17px;
+				-moz-transition: all 0.25s cubic-bezier(0.36, 1, 0.62, 0.98) 0.3s;
+				-webkit-transition: all 0.25s cubic-bezier(0.36, 1, 0.62, 0.98) 0.3s;
+				transition: all 0.25s cubic-bezier(0.36, 1, 0.62, 0.98) 0.3s;
+			}
+			
+			.form-block--is-signup .form-block__input-wrapper {
+				height: 252px;
+				-moz-transition: all 0.5s cubic-bezier(0.36, 1, 0.62, 0.98) 0.2s;
+				-webkit-transition: all 0.5s cubic-bezier(0.36, 1, 0.62, 0.98) 0.2s;
+				transition: all 0.5s cubic-bezier(0.36, 1, 0.62, 0.98) 0.2s;
+			}
+			
+			.form-group--signup {
+				position: absolute;
+				top: 0;
+				left: 150%;
+				width: 100%;
+			}
+			
+			.form-group__input {
+				display: block;
+				font-size: 15px;
+				color: #fff;
+				width: 100%;
+				box-sizing: border-box;
+				font-size: 16px;
+				padding: 14px 10px;
+				margin-bottom: 15px;
+				background: rgba(255, 255, 255, 0.25);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 10px;
+			}
+			
+			.form-group__input:focus {
+				outline: none;
+				border: 1px solid #fff;
+				background: transparent;
+			}
+			
+			.form-block--is-signup .form-group__input {
+				transform: translateX(-150%);
+			}
+			
+			.form-group--login .form-group__input {
+				opacity: 1;
+			}
+			
+			.form-block--is-signup .form-group--login .form-group__input {
+				opacity: 0;
+			}
+			
+			.form-group--signup .form-group__input {
+				opacity: 0;
+			}
+			
+			.form-block--is-signup .form-group--signup .form-group__input {
+				opacity: 1;
+			}
+			
+			.form-group__input:nth-of-type(1) {
+				-moz-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.085s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				-webkit-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.085s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.085s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+			}
+			
+			.form-group__input:nth-of-type(2) {
+				-moz-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.17s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				-webkit-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.17s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.17s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+			}
+			
+			.form-group__input:nth-of-type(3) {
+				-moz-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.255s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				-webkit-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.255s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.255s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+			}
+			
+			.form-group__input:nth-of-type(4) {
+				-moz-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.34s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				-webkit-transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.34s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+				transition: transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.34s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out;
+			}
+			
+			.button {
+				display: inline-block;
+				padding: 15px 12px;
+				margin-bottom: 0;
+				font-size: 16px;
+				font-weight: 400;
+				text-transform: uppercase;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				border: none;
+				-moz-transition: all 0.2s ease-in-out;
+				-webkit-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+				-webkit-box-shadow: 0px 0px 13px 8px rgba(0, 0, 0, 0.1);
+				-moz-box-shadow: 0px 0px 13px 8px rgba(0, 0, 0, 0.1);
+				box-shadow: 0px 0px 13px 8px rgba(0, 0, 0, 0.1);
+			}
+			
+			.button--primary {
+				background: var(--secondary);
+				border-radius: 10px;
+			}
+			
+			.button:hover {
+				-webkit-box-shadow: 0px 0px 18px 15px rgba(0, 0, 0, 0.15);
+				-moz-box-shadow: 0px 0px 18px 15px rgba(0, 0, 0, 0.15);
+				box-shadow: 0px 0px 18px 15px rgba(0, 0, 0, 0.15);
+			}
+			
+			.full-width {
+				width: 100%;
+			}
+			
+			input[type="checkbox"] {
+				display: none;
+			}
+			
+			input[type="checkbox"] + label:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 10px;
+				right: 0;
+				width: 43px;
+				height: 8px;
+				background: rgba(255, 255, 255, 0.4);
+				cursor: pointer;
+				-webkit-border-radius: 50px;
+				-moz-border-radius: 50px;
+				border-radius: 50px;
+			}
+			
+			input[type="checkbox"] + label:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 1px;
+				right: 18px;
+				width: 25px;
+				height: 25px;
+				background: var(--secondary);
+				cursor: pointer;
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				border-radius: 50%;
+				-webkit-box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.15);
+				-moz-box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.15);
+				box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.15);
+				-moz-transition: all 0.3s ease-in-out;
+				-webkit-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+			}
+			
+			input[type="checkbox"]:checked + label:after {
+				right: 0;
+			}
+			
+			::-webkit-input-placeholder {
+				/* Chrome/Opera/Safari */
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			
+			::-moz-placeholder {
+				/* Firefox 19+ */
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			
+			:-ms-input-placeholder {
+				/* IE 10+ */
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			
+			:-moz-placeholder {
+				/* Firefox 18- */
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			
+			.tooltip {
+				padding: 7px;
+				-webkit-border-radius: 1px;
+				-moz-border-radius: 1px;
+				border-radius: 1px;
+				background: rgba(0, 0, 0, 0.5);
+				color: var(--textual);
+				font-size: 12px;
+				position: absolute;
+				top: -10px;
+				right: 0;
+			}
+		</style>
+		<!-- End CSS -->
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-light" id="content">
+				<!-- Navbar brand -->
+				<a class="navbar-brand" href="#">☁️ Altus</a>
+			</nav>
+		</header>
+		<br>
+		<!-- React login -->
+		<div id="app"></div>
+	</body>
+
+	<!-- JS -->
+	<script>
+		"use strict";
+
+		const mode = 'login';
+
+		class LoginComponent extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = {
+					mode: this.props.mode
+				};
+			}
+
+			toggleMode() {
+				var newMode = this.state.mode === 'login' ? 'signup' : 'login';
+				this.setState({
+					mode: newMode
+				});
+			}
+
+			render() {
+				return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+					className: `form-block-wrapper form-block-wrapper--is-${this.state.mode}`
+				}),
+					/*#__PURE__*/React.createElement("section", {
+						className: `form-block form-block--is-${this.state.mode}`
+					},
+					/*#__PURE__*/React.createElement("header", {
+						className: "form-block__header"
+					},
+					/*#__PURE__*/React.createElement("h1", null, this.state.mode === 'login' ? 'Welcome back!' : 'Sign up'), /*#__PURE__*/React.createElement("div", {
+						className: "form-block__toggle-block"
+					},
+					/*#__PURE__*/React.createElement("span", null, this.state.mode === 'login' ? 'Don\'t' : 'Already', " have an account? Click here!"), /*#__PURE__*/React.createElement("input", {
+						id: "form-toggler",
+						type: "checkbox",
+						onClick: this.toggleMode.bind(this)
+					}),
+					/*#__PURE__*/React.createElement("label", {
+						htmlFor: "form-toggler"
+					}))),
+					/*#__PURE__*/React.createElement(LoginForm, {
+						mode: this.state.mode,
+						onSubmit: this.props.onSubmit
+					})));
+			}
+		}
+
+		class LoginForm extends React.Component {
+			constructor(props) {
+				super(props);
+			}
+
+			render() {
+				return /*#__PURE__*/React.createElement("form", {
+					onSubmit: this.props.onSubmit
+				},
+					/*#__PURE__*/React.createElement("div", {
+						className: "form-block__input-wrapper"
+					},
+					/*#__PURE__*/React.createElement("div", {
+						className: "form-group form-group--login"
+					},
+					/*#__PURE__*/React.createElement(Input, {
+						type: "text",
+						id: "username",
+						label: "user name",
+						disabled: this.props.mode === 'signup'
+					}),
+					/*#__PURE__*/React.createElement(Input, {
+						type: "password",
+						id: "password",
+						label: "password",
+						disabled: this.props.mode === 'signup'
+					})),
+					/*#__PURE__*/React.createElement("div", {
+						className: "form-group form-group--signup"
+					},
+					/*#__PURE__*/React.createElement(Input, {
+						type: "text",
+						id: "fullname",
+						label: "full name",
+						disabled: this.props.mode === 'login'
+					}),
+					/*#__PURE__*/React.createElement(Input, {
+						type: "email",
+						id: "email",
+						label: "email",
+						disabled: this.props.mode === 'login'
+					}),
+					/*#__PURE__*/React.createElement(Input, {
+						type: "password",
+						id: "createpassword",
+						label: "password",
+						disabled: this.props.mode === 'login'
+					}),
+					/*#__PURE__*/React.createElement(Input, {
+						type: "password",
+						id: "repeatpassword",
+						label: "repeat password",
+						disabled: this.props.mode === 'login'
+					}))),
+					/*#__PURE__*/React.createElement("button", {
+						className: "button button--primary full-width",
+						type: "submit"
+					},
+					this.props.mode === 'login' ? 'Log In' : 'Sign Up'));
+			}
+		}
+
+		const Input = ({
+			id,
+			type,
+			label,
+			disabled
+		}) => /*#__PURE__*/React.createElement("input", {
+			className: "form-group__input",
+			type: type,
+			id: id,
+			placeholder: label,
+			disabled: disabled
+		});
+
+		const App = () => /*#__PURE__*/React.createElement("div", {
+			className: `app app--is-${mode}`
+		}, /*#__PURE__*/React.createElement(LoginComponent, {
+			mode: mode,
+			onSubmit: function () {
+				console.log('submit');
+			}
+		}));
+
+		ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById("app"));
+	</script>
+	<!-- End JS -->
+</html>

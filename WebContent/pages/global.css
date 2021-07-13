@@ -1,0 +1,53 @@
+:root {
+	--primary: #3b4d61;
+	--secondary: #ef9d10;
+	--tertiary: #6b7b8c;
+	--textual: #FFFFFF;
+	--background: #c4c4c4;
+}
+
+/*Navbar coloring and positioning*/
+.navbar {
+	background-color: var(--secondary);
+	position: fixed;
+	width: 100%;
+}
+
+/*Center Navbar brand positioning*/
+.navbar-brand {
+	position: fixed;
+	top: 0px;
+	width:100%;
+	text-align:center;
+	left: 0px;
+}
+
+/*For Navbar text coloring*/
+#content a {
+	color: var(--primary);
+}
+
+/*For profile icon list*/
+#profile {
+	text-align: right;
+}
+
+#header {
+	width: 100%;
+}
+
+/*Table formatting*/
+table {
+	width: 100%;
+	background-color: var(--background);
+	color: var(--primary);
+	font-size: 20px;
+}
+
+tr {
+	border: 5px solid white;
+}
+
+td {
+	padding: 15px;
+}
