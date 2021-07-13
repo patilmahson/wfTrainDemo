@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.wftraining.controllers.ProfileController;
 import com.example.wftraining.domains.Account;
-import com.example.wftraining.domains.Customer;
 import com.example.wftraining.domains.Profile;
 import com.example.wftraining.domains.User;
 import com.example.wftraining.error.ProfileNotFoundException;

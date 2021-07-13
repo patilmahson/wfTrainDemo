@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.wftraining.domains.Customer;
 import com.example.wftraining.domains.Transaction;
-import com.example.wftraining.repositories.CustomerRepository;
 import com.example.wftraining.repositories.TransactionRepository;
 
 @Service

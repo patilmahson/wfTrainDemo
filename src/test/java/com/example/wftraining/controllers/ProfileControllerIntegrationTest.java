@@ -28,7 +28,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.example.wftraining.domains.Account;
-import com.example.wftraining.domains.Customer;
 import com.example.wftraining.domains.Profile;
 import com.example.wftraining.domains.User;
 import com.example.wftraining.services.ProfileService;

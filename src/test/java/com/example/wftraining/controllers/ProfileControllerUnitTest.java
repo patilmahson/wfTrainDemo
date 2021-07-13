@@ -21,7 +21,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.wftraining.domains.Account;
-import com.example.wftraining.domains.Customer;
 import com.example.wftraining.domains.Profile;
 import com.example.wftraining.domains.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
