@@ -1,17 +1,20 @@
 <!-- [[[https://codepen.io/gvillar08/pen/gOWabro]]] -->
 
-<!-- HTML -->
-<!doctype html>
-<html lang="en">
-	<head th:insert="navFrag.html :: headerfiles">
+<html>
+	<head>
+		<!-- Custom stylesheet (GOES LAST) -->
+		<link href="global.css" rel="stylesheet">
+
 		<!-- CSS -->
 		<style>
 		</style>
 		<!-- End CSS -->
 	</head>
 	<body>
-		<header th:insert="navFrag.html :: nav"></header>
-		<br><br><br>
+		<header>
+			<object type="text/html" data="fragment.html" id="header"></object>
+		</header>
+		<br>
 	</body>
 
 	<!-- JS -->

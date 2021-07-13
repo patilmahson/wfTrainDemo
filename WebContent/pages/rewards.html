@@ -2,15 +2,16 @@
 
 <!-- Bootstrap Carousel reference: https://codepen.io/redfrost/pen/mzHjb -->
 
-<!-- HTML -->
-<!doctype html>
-<html lang="en">
-	<head th:insert="navFrag.html :: headerfiles">
+<html>
+	<head>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
 
 		<!-- Bootstrap/JQuery JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+		<!-- Custom stylesheet (GOES LAST) -->
+		<link href="global.css" rel="stylesheet">
 
 		<!-- CSS -->
 		<style>
@@ -88,8 +89,11 @@
 		<!-- End CSS -->
 	</head>
 	<body>
-		<header th:insert="navFrag.html :: nav"></header>
+		<header>
+			<object type="text/html" data="fragment.html" id="header"></object>
+		</header>
 		<br>
+
 		<!-- Table Content -->
 		<table>
 			<tr>

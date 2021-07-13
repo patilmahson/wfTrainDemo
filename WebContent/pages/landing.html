@@ -1,9 +1,10 @@
 <!-- [[[https://codepen.io/gvillar08/pen/gOWabro]]] -->
 
-<!-- HTML -->
-<!doctype html>
-<html lang="en">
-	<head th:insert="navFrag.html :: headerfiles">
+<html>
+	<head>
+		<!-- Custom stylesheet (GOES LAST) -->
+		<link href="global.css" rel="stylesheet">
+
 		<!-- CSS -->
 		<style>
 			p {
@@ -13,7 +14,9 @@
 		<!-- End CSS -->
 	</head>
 	<body>
-		<header th:insert="navFrag.html :: nav"></header>
+		<header>
+			<object type="text/html" data="fragment.html" id="header"></object>
+		</header>
 		<br>
 
 		<!-- Main Content -->

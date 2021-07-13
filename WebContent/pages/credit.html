@@ -2,13 +2,13 @@
 
 <!-- Donut diagram by https://codepen.io/yasi-roshan/pen/XWddWmj -->
 
-<!-- HTML -->
-<!doctype html>
-<html lang="en">
-	<head th:insert="navFrag.html :: headerfiles">
-
+<html>
+	<head>
 		<!-- JS Libraries -->
 		<script type="text/javascript" src="https://d3js.org/d3.v3.js"></script>
+
+		<!-- Custom stylesheet (GOES LAST) -->
+		<link href="global.css" rel="stylesheet">
 
 		<!-- CSS -->
 		<style>
@@ -36,7 +36,9 @@
 		<!-- End CSS -->
 	</head>
 	<body>
-		<header th:insert="navFrag.html :: nav"></header>
+		<header>
+			<object type="text/html" data="fragment.html" id="header"></object>
+		</header>
 		<br>
 
 		<!-- Table Content -->

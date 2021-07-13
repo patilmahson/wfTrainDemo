@@ -1,8 +1,6 @@
 <!-- Login by https://codepen.io/Mr_Dzi/pen/WpeYNQ -->
 
-<!-- HTML -->
-<!doctype html>
-<html lang="en">
+<html>
 	<head>
 		<link rel="icon" href="Graphics/Logo.png">
 		<title>Altus</title>
@@ -19,44 +17,18 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+		<!-- Custom stylesheet (GOES LAST) -->
+		<link href="global.css" rel="stylesheet">
+
 		<!-- responsive viewport meta tag -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- CSS -->
 		<style>
-			:root {
-				--primary: #3b4d61;
-				--secondary: #ef9d10;
-				--tertiary: #6b7b8c;
-				--textual: #FFFFFF;
-				--background: #c4c4c4;
-			}
-			
-			/*Navbar coloring and positioning*/
-			.navbar {
-				background-color: var(--secondary);
-				position: fixed;
-				width: 100%;
-			}
-
-			/*Center Navbar brand positioning*/
-			.navbar-brand {
-				position: fixed;
-				top: 0px;
-				width:100%;
-				text-align:center;
-				left: 0px;
-			}
-
-			/*For Navbar text coloring*/
-			#content a {
-				color: var(--primary);
-			}
-
 			body {
 				font-family: 'Open Sans', sans-serif;
 				font-size: 16px;
-				color: #fff;
+				color: var(--textual);
 				margin: 0 !important;
 			}
 
@@ -234,6 +206,7 @@
 			
 			.button--primary {
 				background: var(--secondary);
+				border-radius: 10px;
 			}
 			
 			.button:hover {
@@ -320,7 +293,7 @@
 				-moz-border-radius: 1px;
 				border-radius: 1px;
 				background: rgba(0, 0, 0, 0.5);
-				color: #fff;
+				color: var(--textual);
 				font-size: 12px;
 				position: absolute;
 				top: -10px;
